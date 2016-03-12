@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>New School CSS</title>
+
+		<meta name="description" content="How to craft geometric designs with front-end code">
+		<meta name="author" content="Brenna O'Brien">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/brenzone.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/tomorrow-night-bright.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+        <section data-background="e62b1e">
+					<h1 class="main">New School CSS</strong></h1>
+          <br>
+          <br>
+          <p class="main-credit"><span class="name">Black Hills Summit 2015</p>
+				</section>
+
+        <section>
+          <p>&nbsp;</p>
+          <h3>CSS can be frustrating</h3>
+        </section>
+
+        <section>
+          <p>old school CSS hacks</p>
+          <h3><span style="text-decoration:line-through;">CSS</span> can be frustrating</h3>
+        </section>
+
+        <section>
+          <h3>new tools for old problems</h3>
+          <p>plus some nifty tricks</p>
+        </section>
+
+				<section>
+					<h3>vertical centering</h3>
+          <div class="half">
+            <p>old school</p>
+            <pre><code>
+  .parent {
+     display : table;
+  }
+  .vertically-center {
+    display: table-cell;
+    vertical-align: middle;
+  }
+            </code></pre>
+          </div>
+          <div class="half">
+            <p>new school</p>
+            <pre><code>
+  .vertically-center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+            </code></pre>
+          </div>
+				</section>
+
+        <section>
+          <h3>CSS <code>transform</code></h3>
+          <br>
+
+          <ul>
+            <li>IE9 and up</li>
+            <li><code>-webkit-</code> and <code>-ms-</code> prefixes required*</li>
+          </ul>
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <p class="small">* but you should automate that (autoprefixer)</p>
+        </section>
+
+        <section>
+          <h3>full height elements</h3>
+          <div class="half">
+            <p>old school</p>
+            <pre><code>
+  body, html {
+    height: 100%;
+  }
+
+  .parent-of-full-height {
+    height: 100%
+  }
+
+  .full-height {
+    height: 100%;
+  }
+            </code></pre>
+          </div>
+          <div class="half">
+            <p>new school</p>
+            <pre><code>
+  .full-height {
+    height: 100vh;
+  }
+            </code></pre>
+          </div>
+
+        </section>
+
+        <section>
+          <h3><code>vh</code> units</h3>
+          <br>
+          <ul>
+            <li>IE9 and up</li>
+            <li>iOS7 Safari can be buggy (<a href="https://gist.github.com/pburtchaell/e702f441ba9b3f76f587">but there's a fix</a>)</li>
+            <li>see also <code>vw</code>, <code>vmin</code>, <code>vmax</code></li>
+          </ul>
+          <br>
+          <br>
+          <br>
+          <br>
+          <p><a href="http://caniuse.com/#search=vh" class="ref">http://caniuse.com/#feat=viewport-units</a></p>
+        </section>
+
+        <section>
+          <h3>text in columns</h3>
+            <p>old school</p>
+            <div class="third">
+              <pre><code>
+  .left-column,
+  .right-column {
+    float: left;
+    width: 46%;
+  }
+
+  .left-column {
+    margin-right: 4%;
+  }
+              </code></pre>
+            </div>
+            <div class="two-thirds">
+              <pre><code class="html">
+  &lt;div class="left-column"&gt;
+    &lt;p&gt;The last question was asked for the first time, half in jest, on May 21, 2061, at a time when humanity first stepped into the light. The question came about as a result of a five dollar bet over highballs, and it happened this way:&lt;/p&gt;
+    &lt;p&gt;Alexander Adell and Bertram Lupov were two of the faithful attendants of Multivac. As well as any human beings could, they knew what lay behind the cold, clicking, flashing face -- miles and miles of face -- of that giant computer. They had at least a vague notion of the general plan of relays and circuits that had long since grown past the point where any single human could possibly have a firm grasp of the whole.&lt;/p&gt;
+    &lt;p&gt;Multivac was self-adjusting and self-correcting. It had to be, for nothing human could adjust and correct it quickly enough or even adequately enough -- so Adell and Lupov attended the monstrous giant only lightly and superficially, yet as well as any men could. They fed it data, adjusted questions to its needs and translated the answers that were issued. Certainly they, and all others like them, were fully entitled to share In the glory that was Multivac's.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="right-column"&gt;
+    &lt;p&gt;For decades, Multivac had helped design the ships and plot the trajectories that enabled man to reach the Moon, Mars, and Venus, but past that, Earth's poor resources could not support the ships. Too much energy was needed for the long trips. Earth exploited its coal and uranium with increasing efficiency, but there was only so much of both.&lt;/p&gt;
+    &lt;p&gt;But slowly Multivac learned enough to answer deeper questions more fundamentally, and on May 14, 2061, what had been theory, became fact.&lt;/p&gt;
+    &lt;p&gt;The energy of the sun was stored, converted, and utilized directly on a planet-wide scale. All Earth turned off its burning coal, its fissioning uranium, and flipped the switch that connected all of it to a small station, one mile in diameter, circling the Earth at half the distance of the Moon. All Earth ran by invisible beams of sunpower.&lt;/p&gt;
+  &lt;/div&gt;
+              </code></pre>
+            </div>
+        </section>
+
+        <section>
+          <h3>text in columns</h3>
+            <p>new school</p>
+            <div class="third">
+              <pre><code>
+  .content {
+    columns: 2;
+    column-gap: 50px;
+  }
+              </code></pre>
+            </div>
+            <div class="two-thirds">
+              <pre><code class="html">
+  &lt;div class="content"&gt;
+    &lt;p&gt;The last question was asked for the first time, half in jest, on May 21, 2061, at a time when humanity first stepped into the light. The question came about as a result of a five dollar bet over highballs, and it happened this way:&lt;/p&gt;
+    &lt;p&gt;Alexander Adell and Bertram Lupov were two of the faithful attendants of Multivac. As well as any human beings could, they knew what lay behind the cold, clicking, flashing face -- miles and miles of face -- of that giant computer. They had at least a vague notion of the general plan of relays and circuits that had long since grown past the point where any single human could possibly have a firm grasp of the whole.&lt;/p&gt;
+    &lt;p&gt;Multivac was self-adjusting and self-correcting. It had to be, for nothing human could adjust and correct it quickly enough or even adequately enough -- so Adell and Lupov attended the monstrous giant only lightly and superficially, yet as well as any men could. They fed it data, adjusted questions to its needs and translated the answers that were issued. Certainly they, and all others like them, were fully entitled to share In the glory that was Multivac's.&lt;/p&gt;
+    &lt;p&gt;For decades, Multivac had helped design the ships and plot the trajectories that enabled man to reach the Moon, Mars, and Venus, but past that, Earth's poor resources could not support the ships. Too much energy was needed for the long trips. Earth exploited its coal and uranium with increasing efficiency, but there was only so much of both.&lt;/p&gt;
+    &lt;p&gt;But slowly Multivac learned enough to answer deeper questions more fundamentally, and on May 14, 2061, what had been theory, became fact.&lt;/p&gt;
+    &lt;p&gt;The energy of the sun was stored, converted, and utilized directly on a planet-wide scale. All Earth turned off its burning coal, its fissioning uranium, and flipped the switch that connected all of it to a small station, one mile in diameter, circling the Earth at half the distance of the Moon. All Earth ran by invisible beams of sunpower.&lt;/p&gt;
+  &lt;/div&gt;
+              </code></pre>
+              <br>
+            </div>
+        </section>
+
+        <section>
+          <h3>CSS columns</h3>
+          <ul>
+            <li>IE 10 and up </li>
+            <li>some advanced features not fully supported<br> in webkit, but workarounds exist</li>
+            <li>needs <code>-moz-</code> and <code>-webkit-</code> prefixes*</li>
+            <li>falls back nicely to a single column</li>
+          </ul>
+
+          <br>
+          <br>
+          <br>
+          <p class="small">* are you automating this yet?</p>
+          <br>
+        </section>
+
+        <section>
+            <h3>equal height columns </h3>
+
+            <div class="half">
+              <p>old school</p>
+              <ul>
+                <li><code>display: table</code></li>
+                <li>hard stop gradient backgrounds</li>
+                <li>set height with JavaScript</li>
+                <!-- <li>etc.</li> -->
+                <li><img style="vertical-align: top" src="img/cry-evertim.png" alt="" width="150"></li>
+              </ul>
+            </div>
+            <div class="half">
+              <p>new school</p>
+              <pre><code>
+  .row {
+    display: flex;
+  }
+
+  /* flex-direction: row;
+  is default behaviour */
+            </code></pre>
+          </div>
+
+        </section>
+
+        <section>
+          <h3>flexbox</h3>
+          <ul>
+            <li>IE 9 and up</li>
+            <li>needs <code>-ms-</code> and <code>-webkit-</code> prefixes</li>
+            <li>solves a lot of classic layout problems:  <br>see <a class="" href="http://philipwalton.github.io/solved-by-flexbox">Solved by Flexbox</a></li>
+          </ul>
+          <br>
+          <br>
+          <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" class="ref">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a>
+        </section>
+
+        <section>
+          <h3>clearfix</h3>
+          <div class="half">
+
+            <p>old school</p>
+            <pre><code>
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+            </code></pre>
+          </div>
+          <div class="half">
+            <p>new school</p>
+            <pre><code>
+  .element-with-floats {
+    overflow: hidden;
+  }
+            </code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h3>clearfix</h3>
+          <div class="half">
+
+            <p>old school</p>
+            <pre><code>
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+            </code></pre>
+          </div>
+          <div class="half">
+            <p>new school</p>
+            <p>flexbox!</p>
+        </section>
+
+        <section>
+          <h3>the media object</h3>
+          <p>(overflow hidden clearfix)</p>
+          <div class="two-thirds first">
+          <br>
+            <img src="img/media-object-details.png" alt="" class="naked" width="600">
+            <a style="display: block;" href="http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/" class="ref">further reading</a>
+          </div>
+          <div class="third">
+            <pre class="inline"><code>
+  .media {
+    overflow: hidden;
+  }
+
+  .media__img {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .media__body {
+    overflow: hidden;
+  }
+          </code></pre>
+          </div>
+        </section>
+
+       <!--  <section>
+          <h3>the media object</h3>
+          <p>(overflow hidden clearfix)</p>
+          <img src="img/media-object.png" alt="">
+        </section>
+
+        <section>
+          <h3>the media object</h3>
+          <pre class="inline"><code>
+  .media {
+    overflow: hidden;
+  }
+
+  .media__img {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .media__body {
+    overflow: hidden;
+  }
+          </code></pre>
+        </section> -->
+
+        <section>
+          <h3>fluid iframes</h3>
+          <div class="clearfix">
+
+          <div class="half">
+            <p>old school</p>
+            <pre><code> iframe {
+  width: 100%;
+ }</code></pre>
+            <img src="img/iframe-fail.gif" alt="">
+          </div>
+          <div class="half">
+            <p>new school</p>
+            <pre><code>  .iframe-container {
+    position: relative;
+    padding-top: 56.25%; /* 9/16 */
+  }
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }</code></pre>
+          </div>
+          </div>
+          <a href="http://fitvidsjs.com/" class="ref">see also: fitvidsjs.com</a>
+        </section>
+
+        <section>
+        <div class="two-thirds first">
+          <h3>intrinsic ratio</h3>
+          <p>let's play guess<br> the computed padding </p>
+          <p class="small">hint: it's not 20px</p>
+          <br>
+        </div>
+        <div class="third">
+          <br>
+          <pre><code>
+  .box {
+    width: 300px;
+    height: 100px;
+    padding-top: 20%;
+  }
+          </code></pre>
+        </div>
+
+        </section>
+
+        <section>
+          <div class="two-thirds first">
+            <h3>intrinsic ratio</h3>
+            <p>
+              =<br>
+              vertical padding<br>
+              +<br>
+              element with zero height
+            </p>
+          </div>
+          <div class="third">
+            <img src="img/intrinsic-ratio.png" alt="">
+          </div>
+        </section>
+
+        <section>
+          <h3>mixing pixels and percentage</h3>
+          <div class="half">
+            <p>old school</p>
+            <pre><code>
+  .center-me {
+    position: absolute;
+    width: 10px;
+    left: 50%;
+    margin-left: -5px;
+  }
+            </code></pre>
+          </div>
+          <div class="half">
+            <p>new school</p>
+            <pre><code>
+  .center-me {
+    position: absolute;
+    width: 10px;
+    left: calc(50% - 5px);
+  }
+            </code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h3>mixing pixels and percentage</h3>
+          <div class="half">
+            <p>old school</p>
+            <pre><code>
+  .full-background {
+    width: 100%;
+    background: red;
+  }
+
+  .container {
+    width: 1170px;
+    margin: 0 auto;
+  }
+            </code></pre>
+          </div>
+          <div class="half">
+            <p>new school</p>
+            <pre><code>
+  .full-background {
+    width: 100%;
+    background: red;
+    padding: 0 calc(50% - 585px);
+  }
+
+  /* (100% - 1170px)/2 */
+            </code></pre>
+            <br>
+            <p class="small">(assuming you're using <br> <code>box-sizing: border-box</code>)</p>
+          </div>
+        </section>
+
+        <section>
+          <h3>CSS calc</h3>
+          <ul>
+            <li>IE9 and up*</li>
+            <li>* just not for <code>background-position</code> in IE9</li>
+            <li>old Android browsers can only add and subtract</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>CSS calc</h3>
+          <p>use with any of your favourite CSS units!</p>
+          <div class="half">
+            <img src="img/full-height-calc.gif" alt="">
+          </div>
+          <div class="hafl">
+            <pre><code>
+  .header {
+    height: 50px;
+    position: fixed;
+  }
+
+  .full-panel {
+    padding: 20px;
+    height: calc(100vh - 50px);
+  }
+            </code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2>CSS: not so bad anymore</h2>
+        </section>
+
+      </div> <!-- /.slides -->
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script src="js/slides.js"></script>
+
+	</body>
+</html>
